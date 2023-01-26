@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # Prints a string ten times
 
 for ((a=1; a <= 10; a++))
