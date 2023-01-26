@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+# Prints a string ten times
+
+while ((a++ < 13))
+do
+  echo "Hour: $((a-1))"
+  b=0
+  while ((b++ < 59))
+  do
+    echo "$b"
+  done
+done
