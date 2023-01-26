@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+# Prints a string ten times
+a=0
+until [ $a -eq 10 ]
+do
+  echo "Best School"
+  ((a++))
+done

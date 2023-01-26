@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+# Prints a string ten times
+
+for ((a=1; a <= 10; a++))
+do
+  echo "Best School"
+done

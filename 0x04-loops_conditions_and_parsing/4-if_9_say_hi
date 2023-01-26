@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+# Prints a string ten times
+
+while ((a++ < 10))
+do
+  echo "Best School"
+  if [ $a -eq 9 ]
+  then
+    echo "Hi"
+  fi
+done
