@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+# The FizzBuzz test in bash
+
+while ((a++ < 100))
+do
+  if (($a % 15 == 0))
+  then
+    echo "FizzBuzz"
+  elif (($a % 5 == 0))
+  then
+    echo "Buzz"
+  elif (($a % 3 == 0))
+  then
+    echo "Fizz"
+  else
+    echo "$a"
+  fi
+done
