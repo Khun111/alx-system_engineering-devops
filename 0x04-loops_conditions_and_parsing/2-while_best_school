@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# prints Best school ten times
 
 while ((a++ < 10))
 do
