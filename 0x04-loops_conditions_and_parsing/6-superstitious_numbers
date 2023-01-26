@@ -1,5 +1,5 @@
-#!/usr/bin/bash
-# Prints a string ten times
+#!/usr/bin/env bash
+# Prints text conditionally using case
 
 while ((a++ < 20))
 do

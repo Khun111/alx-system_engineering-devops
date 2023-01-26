@@ -1,5 +1,5 @@
-#!/usr/bin/bash
-# Prints a string ten times
+#!/usr/bin/env bash
+# Prints the hours and minutes
 
 while ((a++ < 13))
 do
