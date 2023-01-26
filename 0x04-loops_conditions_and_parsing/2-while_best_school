@@ -1,5 +1,4 @@
-#!/usr/bin/bash
-# Prints a string ten times
+#!/usr/bin/env bash
 
 while ((a++ < 10))
 do
