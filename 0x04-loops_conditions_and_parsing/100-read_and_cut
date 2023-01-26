@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd
+while read -r LINE
+do
+  IFS=":" read -ra FIELDS <<< $LINE
+  echo "${FIELDS[0]}:${FIELDS[2]}:${FIELDS[5]}"
+done < /etc/passwd
+  
