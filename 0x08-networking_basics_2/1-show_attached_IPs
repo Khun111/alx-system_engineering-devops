@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Display active IPv4 addresses
+
+ifconfig | grep inet | awk '{print $2}'
