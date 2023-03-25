@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
-# uses ssh to connect to your server using the private key ~/.ssh/school with the user ubuntu
-ssh-keygen -t rsa -f school -b 4096 -N betty
+# SSH configuration file for the local SSH client
+Host 54.144.144.194
+  User ubuntu
+  PasswordAuthentication no
+  IdentityFile ~/.ssh/school
