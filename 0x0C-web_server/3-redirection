@@ -1,12 +1,29 @@
 #!/usr/bin/env/bash
 # Configure your Nginx server so that /redirect_me is redirecting to another page.
 
-# Install nginx and start the service
-apt-get update
-apt-get -y install nginx
-echo 'Hello World' > /var/www/html/index.html
-# Modify the default Nginx configuration file to include the redirection
-sed -i 's|location / {|location / {\n    return 301 https://oluwatobialure.hashnode.dev/;\n}|' /etc/nginx/sites-available/default
+# Install nginx if not already installed
+if ! [ -x "$(command -v nginx)" ]; then
+  sudo apt-get update
+  sudo apt-get -y install nginx
+fi
 
-# Reload the Nginx configuration
-service nginx restart
+# Create a new configuration file for the redirection
+sudo tee /etc/nginx/sites-available/redirect_me << EOF
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name _;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}
+EOF
+
+# Create a symbolic link to enable the new configuration file
+sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
+
+# Test the Nginx configuration and restart the server
+sudo nginx -t && sudo service nginx restart
+
