@@ -1,20 +1,31 @@
 #!/usr/bin/env bash
-# Update package list and Install nginx
+# Configure your Nginx server so that /redirect_me is redirecting to another page.
 
+# Install nginx if not already installed
 sudo apt-get update
 sudo apt-get -y install nginx
-
-# Allow HTTP traffic through the firewall
 sudo ufw allow 'Nginx HTTP'
 
-# Configure custom 404 page
-sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-sudo sed -i 's/#error_page 404/error_page 404/' /etc/nginx/sites-available/default
-sudo sed -i '/error_page 404/ a\        root /var/www/html;\n' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+sudo tee /etc/nginx/sites-enabled/default > /dev/null << EOF
+server {
+    listen 80;
+    listen [::]:80;
+    root /var/www/html;
+    index index.html index.htm;
+    server_name 54.144.144.194;
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+    location /redirect_me {
+        return 301 https://oluwatobialure.hashnode.dev;
+    }
+}
+EOF
 
-# Configure redirection
-sudo sed -i '/listen 80 default_server;/ a\        return 301 https://oluwatobialure.hashnode.dev$request_uri;' /etc/nginx/sites-available/default
-
-# Restart nginx
-sudo service nginx restart
-
+# Test the Nginx configuration and restart the server
+sudo nginx -t && sudo service nginx restart
