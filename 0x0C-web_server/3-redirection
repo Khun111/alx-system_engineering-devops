@@ -14,7 +14,7 @@ server {
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;;
 
-    server_name _;
+    server_name 54.144.144.194;
 
     location /redirect_me {
         return 301 https://oluwatobialure.hashnode.dev;
