@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Configure identical server with custom header
+sudo apt-get -y update
+sudo apt-get install -y haproxy
+sudo chown -R '$USER:USER' /etc/haproxy
+sudo tee /etc/haproxy/haproxy.cfg << EOF
+frontend http-in
+    bind *:80
+    mode http
+    default_backend zettai
+backend zettai
+    mode http
+    balance roundrobin
+    server web-01 139142-web-01 check
+    server web-02 139142-web-02 check
+EOF
+sudo service haproxy restart
