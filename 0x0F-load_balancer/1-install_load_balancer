@@ -2,7 +2,7 @@
 # Configure identical server with custom header
 sudo apt-get -y update
 sudo apt-get install -y haproxy
-sudo tee -a /etc/haproxy/haproxy.cfg << EOF
+sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null << EOF
 frontend http-in
 	bind *:80
 	default_backend zettai
