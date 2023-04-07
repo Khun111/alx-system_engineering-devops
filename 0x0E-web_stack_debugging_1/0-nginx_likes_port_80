@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# sites-available looks fine but sites-enabled is listeningbon other ports and has a different default port so we'll replace it entirely with contents of site-available
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
