@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Bash script that displays information about subdomains.
-dig_me=$(dig "$1" | grep -A1 'ANSWER SECTION:' | tail -n 1)
-ip=$(echo "$dig_me" | awk -F" " '{print $5}')
-rec_type=$(echo "$dig_me" | awk -F" " '{print $4}')
 sub_ip () {
+  dig_me=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -n 1)
+  ip=$(echo "$dig_me" | awk -F" " '{print $5}')
+  rec_type=$(echo "$dig_me" | awk -F" " '{print $4}')
   echo "The subdomain $2 is a $rec_type record and points to $ip"
 }
 if [ "$#" == 2 ]; then
