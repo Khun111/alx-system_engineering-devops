@@ -40,5 +40,5 @@ frontend http-in
 	default_backend zettai
 backend zettai
 	balance roundrobin
-	server web-01 54.144.144.194
-	server web-02 100.25.140.47
+	server web-01 54.144.144.194:80 check
+	server web-02 100.25.140.47:80 check
