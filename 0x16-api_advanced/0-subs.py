@@ -1,6 +1,10 @@
 #!/usr/bin/python3
+'''Module for reddit api'''
 import requests
+
+
 def number_of_subscribers(subreddit):
+    '''Function for reddit api subscribers'''
     if subreddit is None or not isinstance(subreddit, str):
         return (0)
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
